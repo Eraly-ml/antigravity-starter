@@ -6,65 +6,72 @@ A collection of workflows, hooks, and agents for ML/Kaggle development with Anti
 
 1. Clone this repo or copy the `.agent` folder to your project root
 2. Copy `CLAUDE.md` to your project root and customize it
-3. Use workflows with slash commands: `/kaggle-submit`, `/train-model`, `/eda`
+3. Use workflows with slash commands
 
 ## Structure
 
 ```
 your-project/
-├── CLAUDE.md                    # Project guidelines (customize this)
+├── CLAUDE.md                        # Project guidelines (customize this)
 └── .agent/
-    ├── workflows/               # Slash commands
-    │   ├── kaggle-submit.md     # /kaggle-submit
-    │   ├── train-model.md       # /train-model
-    │   └── eda.md               # /eda
-    ├── hooks/                   # Command validators
-    │   └── command_validator.py # Blocks dangerous commands
-    └── agents/                  # Specialized agents
-        ├── kaggle-analyst.md    # @kaggle-analyst
-        └── ml-code-reviewer.md  # @ml-code-reviewer
+    ├── workflows/                   # Slash commands
+    │   ├── kaggle-submit.md         # /kaggle-submit
+    │   ├── train-model.md           # /train-model
+    │   ├── eda.md                   # /eda
+    │   ├── hackathon.md             # /hackathon
+    │   ├── project.md               # /project
+    │   └── research.md              # /research
+    ├── hooks/                       # Command validators
+    │   └── command_validator.py     # Blocks dangerous commands
+    └── agents/                      # Specialized agents
+        ├── kaggle-analyst.md        # @kaggle-analyst
+        ├── ml-code-reviewer.md      # @ml-code-reviewer
+        ├── hackathon-assistant.md   # @hackathon-assistant
+        ├── project-manager.md       # @project-manager
+        └── research-assistant.md    # @research-assistant
 ```
 
 ## Workflows
 
-### /kaggle-submit
-Validates and submits to Kaggle competitions:
-- Checks submission format
-- Validates for duplicate IDs
-- Submits and checks leaderboard
+### ML Workflows
 
-### /train-model
-ML training workflow:
-- GPU availability check
-- Config validation
-- Training with monitoring
+| Command | Description |
+|---------|-------------|
+| `/kaggle-submit` | Validate and submit to Kaggle |
+| `/train-model` | Train model with GPU monitoring |
+| `/eda` | Create comprehensive EDA |
 
-### /eda
-Comprehensive EDA workflow:
-- Data loading and info
-- Missing values analysis
-- Distribution plots
-- Correlation heatmaps
+### Project Type Workflows
+
+| Command | Description |
+|---------|-------------|
+| `/hackathon` | Fast prototyping, requirement tracking, deadline focus |
+| `/project` | Structured task management, quality checks |
+| `/research` | Experiment tracking, paper review, ablation studies |
 
 ## Agents
 
-### @kaggle-analyst
-Analyzes Kaggle competitions:
-- Reviews top solutions
-- Identifies winning patterns
-- Suggests feature engineering
+### ML Agents
 
-### @ml-code-reviewer
-Reviews ML code for:
-- Data leakage
-- Reproducibility issues
-- Best practices compliance
+| Agent | Description |
+|-------|-------------|
+| `@kaggle-analyst` | Analyzes competitions, reviews winning solutions |
+| `@ml-code-reviewer` | Reviews for data leakage, best practices |
+
+### Project Agents
+
+| Agent | Description |
+|-------|-------------|
+| `@hackathon-assistant` | Fast prototyping, ships MVPs quickly |
+| `@project-manager` | Task tracking, quality gates, structured development |
+| `@research-assistant` | Experiment tracking, paper review, ablations |
 
 ## Hooks
 
 ### command_validator.py
-Blocks dangerous commands like:
-- `rm -rf /`
+
+Blocks dangerous commands:
+- `rm -rf /` - destructive deletion
 - Fork bombs
 - Direct disk writes
 
@@ -72,9 +79,31 @@ Warns about:
 - Force pushes
 - Insecure permissions
 
+## Usage Examples
+
+### Hackathon
+```
+/hackathon
+[Paste your task specification]
+```
+The agent will parse requirements, create MVP plan, and track progress.
+
+### Research Project
+```
+/research
+[Describe your research question]
+```
+Sets up experiment tracking, literature review template, and result logging.
+
+### Kaggle Competition
+```
+/kaggle-submit
+```
+Validates submission format and pushes to leaderboard.
+
 ## Customization
 
-Edit `CLAUDE.md` to add your project-specific rules:
+Edit `CLAUDE.md` for project-specific rules:
 - Coding standards
 - ML best practices
 - Project structure
