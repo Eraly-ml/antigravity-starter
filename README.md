@@ -1,18 +1,20 @@
 # Antigravity Starter Kit
 
-A collection of workflows, hooks, and agents for ML/Kaggle development with Antigravity.
+A collection of workflows, hooks, agents, and MCP servers for ML/Kaggle development with Antigravity.
 
 ## Quick Start
 
 1. Clone this repo or copy the `.agent` folder to your project root
 2. Copy `CLAUDE.md` to your project root and customize it
-3. Use workflows with slash commands
+3. Install MCP dependencies: `pip install -r .agent/mcp/requirements.txt`
+4. Use workflows with slash commands
 
 ## Structure
 
 ```
 your-project/
 ├── CLAUDE.md                        # Project guidelines (customize this)
+├── .mcp.json                        # MCP server configuration
 └── .agent/
     ├── workflows/                   # Slash commands
     │   ├── kaggle-submit.md         # /kaggle-submit
@@ -23,12 +25,66 @@ your-project/
     │   └── research.md              # /research
     ├── hooks/                       # Command validators
     │   └── command_validator.py     # Blocks dangerous commands
-    └── agents/                      # Specialized agents
-        ├── kaggle-analyst.md        # @kaggle-analyst
-        ├── ml-code-reviewer.md      # @ml-code-reviewer
-        ├── hackathon-assistant.md   # @hackathon-assistant
-        ├── project-manager.md       # @project-manager
-        └── research-assistant.md    # @research-assistant
+    ├── agents/                      # Specialized agents
+    │   ├── kaggle-analyst.md        # @kaggle-analyst
+    │   ├── ml-code-reviewer.md      # @ml-code-reviewer
+    │   ├── hackathon-assistant.md   # @hackathon-assistant
+    │   ├── project-manager.md       # @project-manager
+    │   └── research-assistant.md    # @research-assistant
+    └── mcp/                         # MCP servers
+        ├── kaggle_server.py         # Kaggle API integration
+        ├── huggingface_server.py    # HuggingFace Hub API
+        ├── arxiv_server.py          # arXiv paper search
+        ├── mlflow_server.py         # MLflow experiment tracking
+        └── requirements.txt         # MCP dependencies
+```
+
+## MCP Servers
+
+MCP (Model Context Protocol) servers provide API integrations.
+
+### Kaggle Server
+| Tool | Description |
+|------|-------------|
+| `kaggle_list_competitions` | List active competitions |
+| `kaggle_competition_info` | Get competition details |
+| `kaggle_submit` | Submit to competition |
+| `kaggle_download_competition` | Download competition data |
+| `kaggle_submissions` | Get submission history |
+
+### HuggingFace Server
+| Tool | Description |
+|------|-------------|
+| `hf_search_models` | Search for models |
+| `hf_model_info` | Get model details |
+| `hf_search_datasets` | Search datasets |
+| `hf_download_model` | Download a model |
+| `hf_download_dataset` | Download a dataset |
+
+### arXiv Server
+| Tool | Description |
+|------|-------------|
+| `arxiv_search` | Search for papers |
+| `arxiv_paper_info` | Get paper details |
+| `arxiv_download` | Download PDF |
+
+### MLflow Server
+| Tool | Description |
+|------|-------------|
+| `mlflow_list_experiments` | List experiments |
+| `mlflow_list_runs` | List runs |
+| `mlflow_log_metrics` | Log metrics |
+| `mlflow_log_params` | Log parameters |
+| `mlflow_get_run` | Get run details |
+
+### Setup MCP
+```bash
+# Install dependencies
+pip install -r .agent/mcp/requirements.txt
+
+# For Kaggle: setup credentials
+mkdir -p ~/.kaggle
+# Put your kaggle.json there
 ```
 
 ## Workflows
@@ -112,3 +168,4 @@ Edit `CLAUDE.md` for project-specific rules:
 ## License
 
 MIT
+

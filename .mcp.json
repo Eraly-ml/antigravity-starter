@@ -1,0 +1,32 @@
+{
+    "mcpServers": {
+        "kaggle": {
+            "command": "python3",
+            "args": [
+                ".agent/mcp/kaggle_server.py"
+            ],
+            "description": "Kaggle API integration - competitions, datasets, submissions"
+        },
+        "huggingface": {
+            "command": "python3",
+            "args": [
+                ".agent/mcp/huggingface_server.py"
+            ],
+            "description": "HuggingFace Hub - models, datasets, spaces"
+        },
+        "arxiv": {
+            "command": "python3",
+            "args": [
+                ".agent/mcp/arxiv_server.py"
+            ],
+            "description": "arXiv paper search and download"
+        },
+        "mlflow": {
+            "command": "python3",
+            "args": [
+                ".agent/mcp/mlflow_server.py"
+            ],
+            "description": "MLflow experiment tracking"
+        }
+    }
+}
