@@ -1,4 +1,4 @@
-# Antigravity ML Starter Kit
+# Antigravity Starter Kit
 
 A collection of workflows, hooks, and agents for ML/Kaggle development with Antigravity.
 
